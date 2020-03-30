@@ -2,15 +2,14 @@
 
 自学的[【狂神JAVA】MyBatis]( https://www.bilibili.com/video/BV1NE411Q7Nx?p=1 ) 
 
-分享自写源码和笔记
+分享自写源码和笔记，希望对大家有帮助
 
-配置用的
+本人配置
 
 - jdk13.0.2 （jdk1.7以上均可）
 - Maven 3.6.3 
 - MySQL 5.7.23 （mysql5.6以上均可）
 
-Maven和MySQL的安装包已上传。
 
 
 
