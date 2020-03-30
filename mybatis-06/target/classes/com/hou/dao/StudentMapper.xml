@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hou.dao.StudentMapper">
+
+    <select id="getStudent" resultMap="StudentTeacher">
+      select * from student;
+    </select>
+
+    <resultMap id="StudentTeacher" type="com.hou.pojo.Student">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <!--对象使用assiociation-->
+        <!--集合用collection-->
+        <association property="teacher" column="tid"
+                     javaType="com.hou.pojo.Teacher"
+                     select="getTeacher"></association>
+    </resultMap>
+
+    <select id="getTeacher" resultType="com.hou.pojo.Teacher">
+      select * from teacher where id = #{id};
+    </select>
+
+    <!--===============================================================-->
+    <!--按照结果-->
+
+    <select id="getStudent2" resultMap="StudentTeacher2">
+      select s.id sid,s.name sname,t.name tname
+      from student s,teacher t where s.tid=t.id;
+    </select>
+
+    <resultMap id="StudentTeacher2" type="com.hou.pojo.Student">
+        <result property="id" column="sid"></result>
+        <result property="name" column="sname"></result>
+        <association property="teacher" javaType="com.hou.pojo.Teacher">
+            <result property="name" column="tname"></result>
+        </association>
+
+    </resultMap>
+
+</mapper>
